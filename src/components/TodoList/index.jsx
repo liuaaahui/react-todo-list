@@ -1,7 +1,13 @@
 import React from "react";
 import TodoContainer from "../../containers/TodoContainer";
+import {getTodo} from '../../api'
 
 class TodoList extends React.Component {
+    constructor(props){
+        super(props);
+        getTodo(this.props.updateTodoList);
+    }
+
     render() {
         console.log(this.props.todoList)
         return (
