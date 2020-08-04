@@ -1,5 +1,5 @@
 import React from "react";
-
+import {postTodo,getTodo} from '../../api'
 class TodoForm extends React.Component {
     constructor(props) {
         super(props);
@@ -9,8 +9,11 @@ class TodoForm extends React.Component {
     }
 
     onSubmit = () => {
-        console.log(this.state.text);
+        let req = {content:this.state.text,status:false}
+        postTodo(req)
         this.props.addTodo({text:this.state.text,isDone:false});
+        getTodo(this.props.updateTodoList)
+
     }
 
     onChange = (event) => {
@@ -18,7 +21,6 @@ class TodoForm extends React.Component {
             text: event.target.value
         })
     }
-
     render() {
         return (
             <form>

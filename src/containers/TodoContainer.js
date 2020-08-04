@@ -4,11 +4,11 @@ import {connect} from "react-redux";
 
 const mapDispatchToProps = dispatch => {
     return {
-        deleteTodo: (index)=>{
-            dispatch(delTodo(index))
+        deleteTodo: (id)=>{
+            dispatch(delTodo(id))
         },
-        updateTodo: (index)=>{
-            dispatch(updateTodo(index))
+        updateTodo: (id)=>{
+            dispatch(updateTodo(id))
         }
     }
 }

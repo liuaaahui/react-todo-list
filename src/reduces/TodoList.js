@@ -12,6 +12,9 @@ export const todoList = (state=[],action)=>{
                 }
                 return {text:item.text,isDone:i};
             })
+        case "UPDATE_TODO_LIST":
+            console.log("reduce:"+action.itemList)
+            return [...action.itemList]
         default:
             return state;
     }
