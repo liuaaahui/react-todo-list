@@ -1,9 +1,13 @@
 
-export const addTodo = (text) =>({
+export const addTodo = (item) =>({
         type: "ADD_TODO",
-        text: text
+        item: item
 })
 export const delTodo = (index) =>({
         type: "DEL_TODO",
+        index: index
+})
+export const updateTodo = (index) =>({
+        type: "UPDATE_TODO",
         index: index
 })
