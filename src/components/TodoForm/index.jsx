@@ -9,6 +9,7 @@ class TodoForm extends React.Component {
     }
 
     onSubmit = () => {
+        console.log(this.state.text);
         this.props.addTodo(this.state.text);
     }
 
@@ -20,9 +21,9 @@ class TodoForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.onSubmit}>
+            <form>
                 <input type="text" onChange={this.onChange}/>
-                <input type="submit"/>
+                <input type="button" onClick={this.onSubmit} value="提交TODO"/>
             </form>
         )
     }
