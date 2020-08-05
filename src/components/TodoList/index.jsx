@@ -3,11 +3,10 @@ import TodoContainer from "../../containers/TodoContainer";
 import {getTodo} from '../../api'
 
 class TodoList extends React.Component {
-    constructor(props){
-        super(props);
+    componentWillMount(){
         getTodo(this.props.updateTodoList);
     }
-
+    
     render() {
         console.log(this.props.todoList)
         return (

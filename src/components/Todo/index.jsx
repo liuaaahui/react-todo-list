@@ -1,13 +1,25 @@
 import React from 'react';
 import './todo.css'
+import {getTodo} from '../../api'
+import axios from 'axios'
+const URL = 'https://5e9ec500fb467500166c4658.mockapi.io/todos';
 
 class Todo extends React.Component{
     delete = () =>{
-        console.log(this.props.index);
-        this.props.deleteTodo(this.props.todo.id);
+        axios.delete(URL + "/" + this.props.todo.id)
+        .then(res=>{
+            getTodo(this.props.updateTodoList)
+        })
     }
     changeDone = () =>{
-        this.props.updateTodo(this.props.todo.id);
+        axios.put(URL + "/" + this.props.todo.id,{
+            id:this.props.todo.id,
+            content:this.props.todo.content,
+            status:!this.props.todo.status
+        })
+        .then(res=>{
+            getTodo(this.props.updateTodoList)
+        })
     }
     render(){
         return(

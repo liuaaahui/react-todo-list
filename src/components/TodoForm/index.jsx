@@ -1,5 +1,10 @@
 import React from "react";
-import {postTodo,getTodo} from '../../api'
+import { Input, Button, Space } from 'antd';
+import {getTodo} from '../../api'
+import axios from 'axios'
+import './index.css'
+const URL = 'https://5e9ec500fb467500166c4658.mockapi.io/todos';
+
 class TodoForm extends React.Component {
     constructor(props) {
         super(props);
@@ -9,11 +14,13 @@ class TodoForm extends React.Component {
     }
 
     onSubmit = () => {
-        let req = {content:this.state.text,status:false}
-        postTodo(req)
-        this.props.addTodo({text:this.state.text,isDone:false});
-        getTodo(this.props.updateTodoList)
-
+        axios.post(URL,{
+            content:this.state.text,
+            status:false
+        })
+        .then(res=>{
+            getTodo(this.props.updateTodoList)
+        })
     }
 
     onChange = (event) => {
@@ -23,10 +30,12 @@ class TodoForm extends React.Component {
     }
     render() {
         return (
-            <form>
-                <input type="text" onChange={this.onChange}/>
-                <input type="button" onClick={this.onSubmit} value="提交TODO"/>
-            </form>
+            <div>
+                <Space>
+                    <Input type="text" className="addInput" onChange={this.onChange}/>
+                    <Button className="addButton" onClick={this.onSubmit}>add</Button>
+                </Space>
+            </div>
         )
     }
 }

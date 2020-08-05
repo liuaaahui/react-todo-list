@@ -24,3 +24,14 @@ export const getTodo = (updateRedux)=>{
         console.log(error);
     })
 }
+
+export const updateTodo = (todo)=>{
+    axios.put(URL+"/"+todo.id,todo)
+    .then(function(response){
+        //todo 回调
+        console.log(response);
+    })
+    .catch(function(error){
+        console.log(error);
+    })
+}
