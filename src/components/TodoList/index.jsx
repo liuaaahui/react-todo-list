@@ -4,11 +4,15 @@ import {getTodo} from '../../api'
 
 class TodoList extends React.Component {
     componentWillMount(){
-        getTodo(this.props.updateTodoList);
+        getTodo().then(response=>{
+            response.data.forEach(element => {
+                console.log(element)
+                this.props.addTodo(element)
+            });
+        });
     }
     
     render() {
-        console.log(this.props.todoList)
         return (
             <div>
                 {this.props.todoList.map((value, index) => {

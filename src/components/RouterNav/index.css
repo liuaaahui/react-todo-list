@@ -1,0 +1,30 @@
+button{
+    height: 50px;
+    color: black;
+    background-color: cadetblue;
+}
+a {
+    color: black;
+    text-decoration: none;
+}
+a:link {
+    text-decoration: none;
+}
+a:visited {
+    text-decoration: none;
+}
+a:hover {
+    color: black;
+    text-decoration: none;
+}
+a:active {
+    text-decoration: none;
+}
+.navUI{
+    margin: 20px auto;
+    width: 45%;
+}
+.SPACE{
+    margin: 10px auto;
+    margin-left: 300px;
+}

@@ -1,32 +1,35 @@
 import React from 'react';
 import './todo.css'
-import {getTodo} from '../../api'
-import axios from 'axios'
-const URL = 'https://5e9ec500fb467500166c4658.mockapi.io/todos';
+import { Card } from 'antd';
+import {updateTodo, deleteTodo} from '../../api'
 
 class Todo extends React.Component{
     delete = () =>{
-        axios.delete(URL + "/" + this.props.todo.id)
-        .then(res=>{
-            getTodo(this.props.updateTodoList)
+        deleteTodo(this.props.todo.id).then(response=>{
+            this.props.deleteTodo(this.props.todo.id)
         })
     }
+
     changeDone = () =>{
-        axios.put(URL + "/" + this.props.todo.id,{
+        let requestBody = {
             id:this.props.todo.id,
             content:this.props.todo.content,
             status:!this.props.todo.status
-        })
-        .then(res=>{
-            getTodo(this.props.updateTodoList)
+        }
+        updateTodo(requestBody).then(response=>{
+            this.props.updateTodo(requestBody.id)
         })
     }
+    
     render(){
         return(
-        <div className="outerTodo" onClick={this.changeDone}>
-            <div className="everyTodo"><span className={this.props.todo.status?"isdone":"notdone"}>{this.props.todo.content}</span><span className="rightTodo" onClick={this.delete}><img src="/delete.png" alt="x"/></span></div>
-        </div>
+            <div className="outerCard">
+                <Card title="TodoList" hoverable extra={<span onClick={this.delete}><img src="/delete.png" alt="x" /></span>} style={{ width: 300 }}>
+                    <span onClick={this.changeDone} className={this.props.todo.status ? "isdone" : "notdone"}>{this.props.todo.content}</span>
+                </Card>
+            </div>
         )
     }
 }
+
 export default Todo;

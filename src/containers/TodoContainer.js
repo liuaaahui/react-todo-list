@@ -1,5 +1,5 @@
 import Todo from "../components/Todo";
-import {delTodo,updateTodo,updateTodoList} from "../action";
+import {delTodo,updateTodo} from "../action";
 import {connect} from "react-redux";
 
 const mapDispatchToProps = dispatch => {
@@ -9,9 +9,6 @@ const mapDispatchToProps = dispatch => {
         },
         updateTodo: (id)=>{
             dispatch(updateTodo(id))
-        },
-        updateTodoList: (item)=>{
-            dispatch(updateTodoList(item))
         }
     }
 }

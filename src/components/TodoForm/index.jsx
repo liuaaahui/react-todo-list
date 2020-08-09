@@ -1,9 +1,7 @@
 import React from "react";
 import { Input, Button, Space } from 'antd';
-import {getTodo} from '../../api'
-import axios from 'axios'
+import { postTodo } from '../../api'
 import './index.css'
-const URL = 'https://5e9ec500fb467500166c4658.mockapi.io/todos';
 
 class TodoForm extends React.Component {
     constructor(props) {
@@ -14,12 +12,12 @@ class TodoForm extends React.Component {
     }
 
     onSubmit = () => {
-        axios.post(URL,{
+        let requestBody = {
             content:this.state.text,
             status:false
-        })
-        .then(res=>{
-            getTodo(this.props.updateTodoList)
+        }
+        postTodo(requestBody).then(response=>{
+            this.props.addTodo(response.data)
         })
     }
 
@@ -28,6 +26,7 @@ class TodoForm extends React.Component {
             text: event.target.value
         })
     }
+    
     render() {
         return (
             <div>

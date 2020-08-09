@@ -1,37 +1,18 @@
 import axios from 'axios'
-const URL = 'https://5e9ec500fb467500166c4658.mockapi.io/todos';
+const URL = 'http://localhost:8888/todos';
 
 export const postTodo = (todo)=>{
-    axios.post(URL,todo)
-        .then(function(response){
-            //todo 回调
-            console.log(response)
-        })
-        .catch(function(error){
-            console.log(error);
-        })
-
+    return axios.post(URL,todo)
 }
 
-export const getTodo = (updateRedux)=>{
-    axios.get(URL)
-    .then(function(response){
-        //todo 回调
-        console.log(response);
-        updateRedux(response.data);
-    })
-    .catch(function(error){
-        console.log(error);
-    })
+export const getTodo = ()=>{
+    return axios.get(URL)
 }
 
 export const updateTodo = (todo)=>{
-    axios.put(URL+"/"+todo.id,todo)
-    .then(function(response){
-        //todo 回调
-        console.log(response);
-    })
-    .catch(function(error){
-        console.log(error);
-    })
+    return axios.put(URL+"/" + todo.id,todo)
+}
+
+export const deleteTodo = (id)=>{
+    return axios.delete(URL+"/" + id)
 }

@@ -4,13 +4,13 @@ import TodoListContainers from './containers/TodoListContainers'
 import TodoFormContainers from './containers/TodoFormContainers'
 
 class App extends Component{
-  render(){
-  return (
-    <div className="App">
-      <TodoListContainers />
-      <TodoFormContainers />
-    </div>
-  );
-}
+  render() {
+    return (
+      <div className="App">
+        <TodoFormContainers />
+        <TodoListContainers />
+      </div>
+    );
+  }
 }
 export default App;

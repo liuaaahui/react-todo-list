@@ -11,9 +11,5 @@ export const updateTodo = (index) =>({
         type: "UPDATE_TODO",
         index: index
 })
-export const updateTodoList = (itemList) =>({
-        type: "UPDATE_TODO_LIST",
-        itemList: itemList
-})
 
 

@@ -1,19 +1,20 @@
 .outerTodo{
     margin: 20px auto;
-    width: 70%;
-    height: 40px;
+    width: 60%;
+    min-height: 40px;
     border: 1px solid;
     font-size: 24px;
     line-height: 40px;
     border-radius: 5px;
+    word-break: break-all;
+    box-shadow: 2px 2px 3px #aaaaaa;
+    cursor: pointer;
 }
 .isdone{
-    margin-left: 50px;
     float: left;
     text-decoration: line-through;
 }
 .notdone{
-    margin-left: 50px;
     float: left;
 }
 .rightTodo{
@@ -21,7 +22,11 @@
     float: right;
 }
 img{
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 10px;
     cursor: pointer;
+}
+.outerCard{
+    float: left;
+    margin: 40px;
 }
